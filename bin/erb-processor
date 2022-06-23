@@ -1,0 +1,14 @@
+#! /usr/bin/env ruby
+# frozen_string_literal: true
+
+library_path = File.join(File.dirname(__FILE__), "..", "lib")
+
+$LOAD_PATH.unshift(library_path) unless $LOAD_PATH.include?(library_path)
+
+require "erb/processor"
+
+Erb::Processor::ForDirectoryTree
+  .new(ARGV.shift)
+  .run
+
+exit 0
