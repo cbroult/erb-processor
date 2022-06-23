@@ -9,7 +9,7 @@ Feature: Process all ERB files in a directory tree
     Given an empty file named "dir/another_file.js.erb"
     Given an empty file named "another_dir/features/file.feature.erb"
     Given an empty file named "another_dir/file.java.erb"
-    When I run `erb-processor .`
+    When I successfully run `erb-processor .`
     Then the following files should exist:
     | file.cpp |
     | dir/file.cpp |
@@ -30,7 +30,7 @@ Feature: Process all ERB files in a directory tree
       <% end -%>
 
       """
-    When I run `erb-processor .`
+    When I successfully run `erb-processor .`
     Then a file named "foo.feature" should contain exactly:
       """
       Feature: Accounting for all scenarios pending automation
@@ -66,7 +66,7 @@ Feature: Process all ERB files in a directory tree
       """
       Previous procesed content
       """
-    When I run `erb-processor .`
+    When I successfully run `erb-processor .`
     Then the file named "foo.bar" should contain exactly:
       """
       Updated template 16

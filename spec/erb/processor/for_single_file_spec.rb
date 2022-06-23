@@ -65,5 +65,75 @@ RSpec.describe Erb::Processor::ForSingleFile do
     describe "#target_path" do
       it { expect(subject.processed_path).to eq("foo/bar/a_template_path") }
     end
+
+    describe "#commented_processed_header" do
+      it "returns a commented header according to the language" do
+        expect(subject).to receive(:template_path).at_least(:once).and_return("file.c.erb")
+
+        expect(subject.commented_processed_header).to eq <<~EXPECTED_HEADER
+          //#{" "}
+          // WARNING: DO NOT EDIT directly
+          //#{" "}
+          // HOWTO Modify this file
+          // 1. Edit the file file.c.erb
+          // 2. $ erb-processor .
+          //#{" "}
+        EXPECTED_HEADER
+      end
+    end
+
+    describe "#comment" do
+      let(:text_to_comment) do
+        <<~END_OF_TEXT
+          A multiline text
+          that should be properly commented
+        END_OF_TEXT
+      end
+
+      it do
+        expect_comment_for("file.c.erb", <<~EOEC)
+          // A multiline text
+          // that should be properly commented
+        EOEC
+      end
+
+      def expect_comment_for(template_path, expected_comment)
+        expect(subject).to receive(:template_path).and_return(template_path)
+
+        expect(subject.comment(text_to_comment)).to eq(expected_comment)
+      end
+    end
+
+    describe "#processed_language" do
+      it { expect_language_for("code.c.erb", :c) }
+      it { expect_language_for("code.cpp.erb", :cpp) }
+      it { expect_language_for("code.js.erb", :js) }
+      it { expect_language_for("code.html.erb", :html) }
+      it { expect_language_for("code.py.erb", :py) }
+      it { expect_language_for("code.feature.erb", :feature) }
+      it { expect_language_for("code-with-no-extension.erb", :unknown) }
+
+      def expect_language_for(template_path, expected_processed_language)
+        expect(subject).to receive(:template_path).and_return(template_path)
+
+        expect(subject.processed_language).to eq(expected_processed_language)
+      end
+    end
+
+    describe "#processed_header" do
+      it "returns a commented header according to the language" do
+        expect(subject).to receive(:template_path).and_return("template_file.c.erb")
+
+        expect(subject.processed_header).to eq <<~EXPECTED_HEADER
+
+          WARNING: DO NOT EDIT directly
+
+          HOWTO Modify this file
+          1. Edit the file template_file.c.erb
+          2. $ erb-processor .
+
+        EXPECTED_HEADER
+      end
+    end
   end
 end
