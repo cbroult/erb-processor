@@ -30,7 +30,7 @@ module Erb
       end
 
       def processed_content
-        ERB.new(template_content, trim_mode: '<>-').result
+        ERB.new(template_content, trim_mode: "<>-").result
       end
 
       def template_content

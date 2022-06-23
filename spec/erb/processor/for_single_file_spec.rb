@@ -47,15 +47,9 @@ RSpec.describe Erb::Processor::ForSingleFile do
 
       it "uses ERB to process the template" do
         expect(subject).to receive(:template_content)
-          .and_return("<content_to_process>")
+          .and_return("evaluated expression to <%= 4+6 -%>")
 
-        expect(ERB).to receive(:new).with("<content_to_process>")
-                                    .and_return(erb_processor)
-
-        expect(erb_processor).to receive(:result)
-          .and_return("<processed_content>")
-
-        expect(subject.processed_content).to eq("<processed_content>")
+        expect(subject.processed_content).to eq("evaluated expression to 10")
       end
     end
 
