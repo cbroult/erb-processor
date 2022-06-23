@@ -67,7 +67,7 @@ Feature: Process all ERB files in a directory tree
       Previous procesed content
       """
     When I run `erb-processor .`
-    Then a file named "foo.bar" should contain exactly:
+    Then the file named "foo.bar" should contain exactly:
       """
       Updated template 16
       """
