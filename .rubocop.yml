@@ -5,6 +5,7 @@ AllCops:
   NewCops: enable
   TargetRubyVersion: 2.6
   Exclude:
+    - vendor/**/*
   <% `git status --ignored --porcelain`.lines.grep(/^!! /).each do |path| %>
     - <%= path.sub(/^!! /, '') %>
   <% end %>
