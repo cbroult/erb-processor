@@ -27,8 +27,8 @@ RSpec.describe Erb::Processor::ForSingleFile do
 
     describe "#run" do
       it "writes a processed version of the template" do
-        expect(subject).to receive(:processed_path)
-          .and_return(:target_path)
+        expect(subject).to receive(:processed_path).at_least(:once)
+                                                   .and_return(:target_path)
 
         expect(subject).to receive(:processed_content)
           .and_return("<processed_content>")

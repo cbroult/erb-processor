@@ -42,7 +42,7 @@ cucumber_options = {
 
   # run_all: { cmd_additional_args: '--profile guard_all' },
   # focus_on: { 'wip' }, # @wip
-  # notification: true
+  notification: true
 }
 
 guard "cucumber", cucumber_options do

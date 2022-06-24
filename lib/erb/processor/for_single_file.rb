@@ -14,8 +14,7 @@ module Erb
         ERB_TEMPLATE_REGEX.match?(path)
       end
 
-      attr_reader :logger
-      attr_reader :template_path
+      attr_reader :logger, :template_path
 
       def initialize(template_path)
         @logger = Logging.logger[self]
