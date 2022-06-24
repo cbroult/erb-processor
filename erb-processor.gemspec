@@ -32,7 +32,7 @@ Gem::Specification.new do |spec|
     end
   end
   spec.bindir = "bin"
-  spec.executables =  spec.files.grep(%r{\Abin/}) { |f| File.basename(f) }.reject { |f| f.match(%r{console|setup}) }
+  spec.executables = spec.files.grep(%r{\Abin/}) { |f| File.basename(f) }.reject { |f| f.match(/console|setup/) }
   spec.require_paths = ["lib"]
 
   # Uncomment to register a new dependency of your gem

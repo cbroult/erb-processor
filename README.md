@@ -1,28 +1,41 @@
 # Erb::Processor
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/erb/processor`. To experiment with that code, run `bin/console` for an interactive prompt.
+[![Test cucumber](https://github.com/cbroult/erb-processor/actions/workflows/main.yml/badge.svg)](https://github.com/cucumber/cucumber-ruby/actions/workflows/cucumber-ruby.yml)
 
-TODO: Delete this and the text above, and describe your gem
+Allows for the processing of all .erb files in a directory tree.
+
+All .erb files in the specified directory tree are going to be evaluated.
+he corresponding non.erb files are going to be written by removing the .erb extension.
+
 
 ## Installation
-
-Add this line to your application's Gemfile:
-
-```ruby
-gem 'erb-processor'
-```
-
-And then execute:
-
-    $ bundle install
-
-Or install it yourself as:
 
     $ gem install erb-processor
 
 ## Usage
 
-TODO: Write usage instructions here
+    $ erb-processor path/directory/tree/to/process
+
+or
+
+    $ cd path/directory/tree/to/process
+    $ erb-processor .
+
+The list of options is available with:
+
+    $ erb-processor --help
+
+See the features/*.feature files for the expected behavior.
+
+
+## ERB Template File Content
+
+The processed file can automatically include a warning that invites the editing of the template by using the following in the template:
+```ruby
+<%= erb_processor.commented_processed_header %>
+
+```
+
 
 ## Development
 
