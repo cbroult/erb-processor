@@ -44,35 +44,32 @@ module Erb
 
       SPACE = " "
       NEWLINE = "\n"
-      NO_COMMENT_MARKER = ["", ""]
-      CSTYLE_COMMENT = ["//", ""]
+      NO_COMMENT_MARKER = [nil, nil].freeze
+      CSTYLE_COMMENT = ["/*", "*/"].freeze
       LANGUAGE_COMMENTS =
         {
           c: CSTYLE_COMMENT,
           cpp: CSTYLE_COMMENT,
+          java: CSTYLE_COMMENT,
           js: CSTYLE_COMMENT,
-          py: ["#", ""],
-          rb: ["#", ""],
+          py: ["#", nil],
+          rb: ["=begin", "=end"],
           html: ["<!--", "-->"]
-        }
+        }.freeze
 
       def comment(text_to_comment)
         comment_start, comment_end = *LANGUAGE_COMMENTS.fetch(processed_language) { NO_COMMENT_MARKER }
 
-        text_to_comment.lines.collect do |line|
-          commented_line_elements =
-            [comment_start, SPACE, line.chomp]
+        return text_to_comment unless comment_start
 
-          commented_line_elements << [SPACE, comment_end] unless comment_end.empty?
-
-          commented_line_elements << [NEWLINE]
-
-          commented_line_elements.join
+        if comment_end
+          [comment_start, NEWLINE, text_to_comment, comment_end, NEWLINE].join
+        else
+          text_to_comment.lines.collect { |line| [comment_start, line].join(SPACE) }.join
         end
-                       .join
       end
 
-      FILE_EXTENSION_REGEX = /\.([^.]+)$/
+      FILE_EXTENSION_REGEX = /\.([^.]+)$/.freeze
       def processed_language
         if processed_path =~ FILE_EXTENSION_REGEX
           Regexp.last_match(1).intern

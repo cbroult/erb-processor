@@ -12,13 +12,15 @@ Feature: Generate commented processed header
     When I successfully run `erb-processor .`
     Then a file named "code.c" should contain exactly:
       """
-      // 
-      // WARNING: DO NOT EDIT directly
-      // 
-      // HOWTO Modify this file
-      // 1. Edit the file ./code.c.erb
-      // 2. $ erb-processor .
-      // 
+      /*
+
+      WARNING: DO NOT EDIT directly
+      
+      HOWTO Modify this file
+      1. Edit the file ./code.c.erb
+      2. $ erb-processor .
+
+      */
 
       some code
       """
@@ -32,13 +34,15 @@ Feature: Generate commented processed header
     When I successfully run `erb-processor .`
     Then a file named "code.html" should contain exactly:
       """
-      <!--  -->
-      <!-- WARNING: DO NOT EDIT directly -->
-      <!--  -->
-      <!-- HOWTO Modify this file -->
-      <!-- 1. Edit the file ./code.html.erb -->
-      <!-- 2. $ erb-processor . -->
-      <!--  -->
+      <!--
+
+      WARNING: DO NOT EDIT directly
+      
+      HOWTO Modify this file
+      1. Edit the file ./code.html.erb
+      2. $ erb-processor .
+
+      -->
 
       some code
       """
@@ -47,21 +51,20 @@ Feature: Generate commented processed header
     Given a file named "code.feature.erb" with:
       """
       Feature: a feature description
-      <%= erb_processor.commented_processed_header %>
+      <%= erb_processor.commented_processed_header -%>
       some code
       """
     When I successfully run `erb-processor .`
     Then a file named "code.feature" should contain exactly:
       """
       Feature: a feature description
-       
-       WARNING: DO NOT EDIT directly
-       
-       HOWTO Modify this file
-       1. Edit the file ./code.feature.erb
-       2. $ erb-processor .
-       
-
+      
+      WARNING: DO NOT EDIT directly
+      
+      HOWTO Modify this file
+      1. Edit the file ./code.feature.erb
+      2. $ erb-processor .
+      
       some code
       """
 

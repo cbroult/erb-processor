@@ -71,13 +71,15 @@ RSpec.describe Erb::Processor::ForSingleFile do
         expect(subject).to receive(:template_path).at_least(:once).and_return("file.c.erb")
 
         expect(subject.commented_processed_header).to eq <<~EXPECTED_HEADER
-          //#{" "}
-          // WARNING: DO NOT EDIT directly
-          //#{" "}
-          // HOWTO Modify this file
-          // 1. Edit the file file.c.erb
-          // 2. $ erb-processor .
-          //#{" "}
+          /*
+
+          WARNING: DO NOT EDIT directly
+
+          HOWTO Modify this file
+          1. Edit the file file.c.erb
+          2. $ erb-processor .
+
+          */
         EXPECTED_HEADER
       end
     end
@@ -92,8 +94,17 @@ RSpec.describe Erb::Processor::ForSingleFile do
 
       it do
         expect_comment_for("file.c.erb", <<~EOEC)
-          // A multiline text
-          // that should be properly commented
+          /*
+          A multiline text
+          that should be properly commented
+          */
+        EOEC
+      end
+
+      it do
+        expect_comment_for("file.py.erb", <<~EOEC)
+          # A multiline text
+          # that should be properly commented
         EOEC
       end
 
