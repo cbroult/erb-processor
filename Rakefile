@@ -7,6 +7,26 @@ RSpec::Core::RakeTask.new(:spec)
 
 require "rubocop/rake_task"
 
-RuboCop::RakeTask.new
+RuboCop::RakeTask.new do |t|
+  t.options = ["--autocorrect"]
+end
 
-task default: %i[spec rubocop]
+require "rubygems"
+require "cucumber"
+require "cucumber/rake/task"
+
+# if false
+#   Cucumber::Rake::Task.new(:cucumber) do |t|
+#     t.cucumber_opts = ["--format pretty"] # Any valid command line option can go here.
+#   end
+# end
+
+# Cucumber::Rake::Task.new if false
+
+# rubocop:disable Rails/RakeEnvironment
+task :cucumber do
+  system "bundle exec cucumber"
+end
+# rubocop:enable Rails/RakeEnvironment
+
+task default: %i[spec rubocop cucumber]
