@@ -2,6 +2,7 @@
 
 require "erb"
 require "find"
+require_relative "language_commenter"
 
 module Erb
   module Processor
@@ -39,43 +40,7 @@ module Erb
       end
 
       def commented_processed_header
-        comment(processed_header)
-      end
-
-      SPACE = " "
-      NEWLINE = "\n"
-      NO_COMMENT_MARKER = [nil, nil].freeze
-      CSTYLE_COMMENT = ["/*", "*/"].freeze
-      LANGUAGE_COMMENTS =
-        {
-          c: CSTYLE_COMMENT,
-          cpp: CSTYLE_COMMENT,
-          java: CSTYLE_COMMENT,
-          js: CSTYLE_COMMENT,
-          py: ["#", nil],
-          rb: ["=begin", "=end"],
-          html: ["<!--", "-->"]
-        }.freeze
-
-      def comment(text_to_comment)
-        comment_start, comment_end = *LANGUAGE_COMMENTS.fetch(processed_language) { NO_COMMENT_MARKER }
-
-        return text_to_comment unless comment_start
-
-        if comment_end
-          [comment_start, NEWLINE, text_to_comment, comment_end, NEWLINE].join
-        else
-          text_to_comment.lines.collect { |line| [comment_start, line].join(SPACE) }.join
-        end
-      end
-
-      FILE_EXTENSION_REGEX = /\.([^.]+)$/.freeze
-      def processed_language
-        if processed_path =~ FILE_EXTENSION_REGEX
-          Regexp.last_match(1).intern
-        else
-          :unknown
-        end
+        LanguageCommenter.new(processed_path, processed_header).commented_text
       end
 
       def processed_header
@@ -91,7 +56,7 @@ module Erb
       end
 
       def template_content
-        IO.read(template_path)
+        File.read(template_path)
       end
     end
   end
