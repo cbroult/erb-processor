@@ -2,7 +2,7 @@ PATH
   remote: .
   specs:
     erb-processor (0.1.0)
-      logging
+      logging (~> 2.3)
 
 GEM
   remote: https://rubygems.org/
