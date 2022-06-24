@@ -14,17 +14,21 @@ module Erb
         ERB_TEMPLATE_REGEX.match?(path)
       end
 
+      attr_reader :logger
       attr_reader :template_path
 
       def initialize(template_path)
+        @logger = Logging.logger[self]
         @template_path = template_path
       end
 
       FOR_WRITING = "w+"
       def run
+        logger.info { "Processing #{template_path}..." }
         File.open(processed_path, FOR_WRITING) do |output|
           output.print processed_content
         end
+        logger.info { "Wrote #{processed_path}" }
       end
 
       def processed_path
