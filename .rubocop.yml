@@ -1,3 +1,6 @@
+inherit_gem:
+  panolint: panolint-rubocop.yml
+
 AllCops:
   NewCops: enable
   TargetRubyVersion: 2.6

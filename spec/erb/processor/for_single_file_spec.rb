@@ -1,105 +1,90 @@
 # frozen_string_literal: true
 
-# rubocop:disable Metrics/BlockLength
 RSpec.describe Erb::Processor::ForSingleFile do
-  context "class methods" do
-    describe ".template_file?" do
-      let(:subject) { Erb::Processor::ForSingleFile }
+  let(:erb_processor) { described_class.new("./foo/bar/a_template_file.c.erb") }
 
-      it "properly identify template files" do
-        expect(subject.template_file?("foo.bar.erb")).to be true
-        expect(subject.template_file?("foo/bar.erb")).to be true
-        expect(subject.template_file?("foo/bar.ERB")).to be true
-        expect(subject.template_file?("foo/bar/baz.ErB")).to be true
-      end
+  describe ".template_file?" do
+    it "properly identify template files" do
+      expect(described_class.template_file?("foo.bar.erb")).to be true
+      expect(described_class.template_file?("foo/bar.erb")).to be true
+      expect(described_class.template_file?("foo/bar.ERB")).to be true
+      expect(described_class.template_file?("foo/bar/baz.ErB")).to be true
+    end
 
-      it "rejects non template files" do
-        expect(subject.template_file?("foo/bar/baz.ErBz")).to be false
-        expect(subject.template_file?("foo/bar.erb/baz.baz")).to be false
-      end
+    it "rejects non template files" do
+      expect(described_class.template_file?("foo/bar/baz.ErBz")).to be false
+      expect(described_class.template_file?("foo/bar.erb/baz.baz")).to be false
     end
   end
 
-  context "instance methods" do
-    let(:subject) do
-      Erb::Processor::ForSingleFile.new("foo/bar/a_template_path.erb")
+  describe "#run" do
+    it "writes a processed version of the template" do
+      allow(erb_processor).to receive(:processed_path).at_least(:once).
+        and_return(:target_path)
+
+      allow(erb_processor).to receive(:processed_content).
+        and_return("<processed_content>")
+
+      file_object = instance_double(File, "output")
+
+      allow(File).to receive(:open).with(:target_path, "w+").
+        and_yield(file_object)
+
+      expect(file_object).to receive(:print).with("<processed_content>")
+
+      erb_processor.run
     end
+  end
 
-    describe "#run" do
-      it "writes a processed version of the template" do
-        expect(subject).to receive(:processed_path).at_least(:once)
-                                                   .and_return(:target_path)
+  describe "#processed_content" do
+    it "uses ERB to process the template" do
+      allow(erb_processor).to receive(:template_content).
+        and_return("evaluated expression to <%= 4+6 -%>")
 
-        expect(subject).to receive(:processed_content)
-          .and_return("<processed_content>")
-
-        file_object = double(":process_file")
-
-        expect(File).to receive(:open).with(:target_path, "w+")
-                                      .and_yield(file_object)
-
-        expect(file_object).to receive(:print).with("<processed_content>")
-        subject.run
-      end
+      expect(erb_processor.processed_content).to eq("evaluated expression to 10")
     end
+  end
 
-    describe "#processed_content" do
-      let(:erb_processor) { double(:erb_processor) }
+  describe "#template_content" do
+    it "read template file" do
+      allow(File).to receive(:read).with("./foo/bar/a_template_file.c.erb").
+        and_return("<template_content>")
 
-      it "uses ERB to process the template" do
-        expect(subject).to receive(:template_content)
-          .and_return("evaluated expression to <%= 4+6 -%>")
-
-        expect(subject.processed_content).to eq("evaluated expression to 10")
-      end
+      expect(erb_processor.template_content).to eq("<template_content>")
     end
+  end
 
-    describe "#template_content" do
-      it "read template file" do
-        expect(IO).to receive(:read).with("foo/bar/a_template_path.erb")
-                                    .and_return("<template_content>")
+  describe "#processed_path" do
+    it { expect(erb_processor.processed_path).to eq("./foo/bar/a_template_file.c") }
+  end
 
-        expect(subject.template_content).to eq("<template_content>")
-      end
+  describe "#commented_processed_header" do
+    it "returns a commented header according to the C language" do
+      expect(erb_processor.commented_processed_header).to eq <<~EXPECTED_HEADER
+        /*
+
+        WARNING: DO NOT EDIT directly
+
+        HOWTO Modify this file
+        1. Edit the file ./foo/bar/a_template_file.c.erb
+        2. $ erb-processor .
+
+        */
+      EXPECTED_HEADER
     end
+  end
 
-    describe "#target_path" do
-      it { expect(subject.processed_path).to eq("foo/bar/a_template_path") }
-    end
+  describe "#processed_header" do
+    it "returns an evaluated header" do
+      expect(erb_processor.processed_header).to eq <<~EXPECTED_HEADER
 
-    describe "#commented_processed_header" do
-      it "returns a commented header according to the C language" do
-        expect(subject).to receive(:template_path).at_least(:once).and_return("file.c.erb")
+        WARNING: DO NOT EDIT directly
 
-        expect(subject.commented_processed_header).to eq <<~EXPECTED_HEADER
-          /*
+        HOWTO Modify this file
+        1. Edit the file ./foo/bar/a_template_file.c.erb
+        2. $ erb-processor .
 
-          WARNING: DO NOT EDIT directly
-
-          HOWTO Modify this file
-          1. Edit the file file.c.erb
-          2. $ erb-processor .
-
-          */
-        EXPECTED_HEADER
-      end
-    end
-
-    describe "#processed_header" do
-      it "returns an evaluated header" do
-        expect(subject).to receive(:template_path).and_return("./foo/bar/template_file.c.erb")
-
-        expect(subject.processed_header).to eq <<~EXPECTED_HEADER
-
-          WARNING: DO NOT EDIT directly
-
-          HOWTO Modify this file
-          1. Edit the file ./foo/bar/template_file.c.erb
-          2. $ erb-processor .
-
-        EXPECTED_HEADER
-      end
+      EXPECTED_HEADER
     end
   end
 end
-# rubocop:enable Metrics/BlockLength

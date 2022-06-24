@@ -9,9 +9,9 @@ gem "rake", "~> 13.0"
 
 gem "rspec", "~> 3.0"
 
+gem "panolint"
 gem "rubocop", "~> 1.21"
 gem "rubocop-performance", require: false
-gem "panolint"
 
 gem "aruba" # , :git => 'https://github.com/cucumber/aruba.git' # 'https://github
 gem "bundler"

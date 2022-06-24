@@ -21,8 +21,8 @@ OptionParser.new do |opts|
   opts.parse!(ARGV)
 end
 
-Erb::Processor::ForDirectoryTree
-  .new(ARGV.shift)
-  .run
+Erb::Processor::ForDirectoryTree.
+  new(ARGV.shift).
+  run
 
 exit 0
