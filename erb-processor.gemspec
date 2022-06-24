@@ -9,7 +9,11 @@ Gem::Specification.new do |spec|
   spec.email = ["cbroult@yahoo.com"]
 
   spec.summary = "Process all .erb files in a directory tree."
-  spec.description = "All .erb files in the specified directory tree are going to be evaluated. The corresponding non.erb files are going to be written by removing the .erb extension. See the features/*.feature files for the expected behavior."
+  spec.description = <<~END_OF_DESCRIPTION
+    All .erb files in the specified directory tree are going to be evaluated.
+    The corresponding non.erb files are going to be written by removing the .erb extension.
+    See the features/*.feature files for the expected behavior.
+  END_OF_DESCRIPTION
   spec.homepage = "https://github.com/cbroult/erb-processor"
   spec.license = "MIT"
   spec.required_ruby_version = ">= 2.6.0"

@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# rubocop:disable Metrics/BlockLength
 RSpec.describe Erb::Processor::LanguageCommenter do
   context "instance methods" do
     let(:subject) do
@@ -58,3 +59,4 @@ RSpec.describe Erb::Processor::LanguageCommenter do
     end
   end
 end
+# rubocop:enable Metrics/BlockLength

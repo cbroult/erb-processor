@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# rubocop:disable Metrics/BlockLength
 RSpec.describe Erb::Processor::ForSingleFile do
   context "class methods" do
     describe ".template_file?" do
@@ -101,3 +102,4 @@ RSpec.describe Erb::Processor::ForSingleFile do
     end
   end
 end
+# rubocop:enable Metrics/BlockLength
