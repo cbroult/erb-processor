@@ -57,7 +57,7 @@ Feature: Process all ERB files in a directory tree
 
       """
 
-  Scenario: Existing procesed file is overwritten
+  Scenario: Any existing procesed file is overwritten
     Given a file named "foo.bar.erb" with:
       """
       Updated template <%= 4**2 -%>
