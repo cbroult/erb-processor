@@ -53,7 +53,6 @@ group :red_green_refactor, halt_on_fail: true do
   end
 
   cucumber_options = {
-    cmd_additional_args: "--no-profile", # --format progress --color",
     notification: false
   }
 
