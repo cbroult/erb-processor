@@ -3,7 +3,7 @@
 require "find"
 require_relative "for_single_file"
 
-module Erb
+class ERB
   module Processor
     # Convert text to a comment depending on the target language
     class LanguageCommenter

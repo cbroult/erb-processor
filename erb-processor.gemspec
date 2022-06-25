@@ -4,7 +4,7 @@ require_relative "lib/erb/processor/version"
 
 Gem::Specification.new do |spec|
   spec.name = "erb-processor"
-  spec.version = Erb::Processor::VERSION
+  spec.version = ERB::Processor::VERSION
   spec.authors = ["Christophe Broult"]
   spec.email = ["cbroult@yahoo.com"]
 

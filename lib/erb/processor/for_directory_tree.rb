@@ -3,7 +3,7 @@
 require "find"
 require_relative "for_single_file"
 
-module Erb
+class ERB
   module Processor
     # Orchestrate the processing of all .erb templates in tree structure
     class ForDirectoryTree

@@ -1,4 +1,4 @@
-module Erb
+class ERB
   module Processor
     VERSION: String
     # See the writing guide of rbs: https://github.com/ruby/rbs#guides

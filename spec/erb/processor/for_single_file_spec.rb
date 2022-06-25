@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-RSpec.describe Erb::Processor::ForSingleFile do
+RSpec.describe ERB::Processor::ForSingleFile do
   let(:erb_processor) { described_class.new("./foo/bar/a_template_file.c.erb") }
 
   describe ".template_file?" do

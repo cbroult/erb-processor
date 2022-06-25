@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module Erb
+class ERB
   module Processor
     VERSION = "0.1.0"
   end

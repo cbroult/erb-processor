@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-RSpec.describe Erb::Processor::LanguageCommenter do
+RSpec.describe ERB::Processor::LanguageCommenter do
   let(:text_to_comment) do
     <<~END_OF_TEXT
       A multiline text

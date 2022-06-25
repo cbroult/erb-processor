@@ -8,14 +8,14 @@ $LOAD_PATH.unshift(library_path) unless $LOAD_PATH.include?(library_path)
 require "optparse"
 require "erb/processor"
 
-Erb::Processor::LoggingSetup.instance.run(:warn)
+ERB::Processor::LoggingSetup.instance.run(:warn)
 
 LOG_LEVELS = %i[fatal error warn info debug].freeze
 
 OptionParser.new do |opts|
   opts.on("--log-level LEVEL", LOG_LEVELS,
           "Set console logging level (#{LOG_LEVELS.join(", ")})") do |level|
-    Erb::Processor::LoggingSetup.instance.console_appender.level = level
+    ERB::Processor::LoggingSetup.instance.console_appender.level = level
   end
 
   opts.on("-h", "--help", "Prints this help") do
@@ -26,7 +26,7 @@ OptionParser.new do |opts|
   opts.parse!(ARGV)
 end
 
-Erb::Processor::ForDirectoryTree.
+ERB::Processor::ForDirectoryTree.
   new(ARGV.shift).
   run
 

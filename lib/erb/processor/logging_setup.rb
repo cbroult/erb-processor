@@ -3,7 +3,7 @@
 require "logging"
 require "singleton"
 
-module Erb
+class ERB
   module Processor
     # Configure the logging framework according the process needs
     class LoggingSetup

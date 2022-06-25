@@ -4,7 +4,7 @@ require "erb"
 require "find"
 require_relative "language_commenter"
 
-module Erb
+class ERB
   module Processor
     # Processes a single file template
     class ForSingleFile

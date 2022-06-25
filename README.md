@@ -1,4 +1,4 @@
-# Erb::Processor
+# ERB::Processor
 
 [![Test cucumber](https://github.com/cbroult/erb-processor/actions/workflows/main.yml/badge.svg)](https://github.com/cucumber/cucumber-ruby/actions/workflows/cucumber-ruby.yml)
 
@@ -54,4 +54,4 @@ The gem is available as open source under the terms of the [MIT License](https:/
 
 ## Code of Conduct
 
-Everyone interacting in the Erb::Processor project's codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/cbroult/erb-processor/blob/master/CODE_OF_CONDUCT.md).
+Everyone interacting in the ERB::Processor project's codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/cbroult/erb-processor/blob/master/CODE_OF_CONDUCT.md).
