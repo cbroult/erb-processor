@@ -2,10 +2,11 @@
 
 [![Test cucumber](https://github.com/cbroult/erb-processor/actions/workflows/main.yml/badge.svg)](https://github.com/cucumber/cucumber-ruby/actions/workflows/cucumber-ruby.yml)
 
-Allows for the processing of all .erb files in a directory tree.
+Allows for the processing of all `.erb` files in a directory tree.
 
-All .erb files in the specified directory tree are going to be evaluated.
-he corresponding non.erb files are going to be written by removing the .erb extension.
+All `.erb` files in the specified directory tree are going to be
+evaluated and the corresponding files without the `.erb` extension are
+going to be written.
 
 
 ## Installation
@@ -25,17 +26,17 @@ The list of options is available with:
 
     $ erb-processor --help
 
-See the features/*.feature files for the expected behavior.
+## Expected Behavior
 
+See the `features/*.feature` files for the expected behavior.
 
 ## ERB Template File Content
 
-The processed file can automatically include a warning that invites the editing of the template by using the following in the template:
+The processed file can automatically include a warning that invites
+the editing of the template by using the following in the template:
 ```ruby
 <%= erb_processor.commented_processed_header %>
-
 ```
-
 
 ## Development
 
