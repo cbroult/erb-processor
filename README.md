@@ -26,11 +26,11 @@ The list of options is available with:
 
     $ erb-processor --help
 
-## Expected Behavior
+### Expected Behavior
 
 See the `features/*.feature` files for the expected behavior.
 
-## ERB Template File Content
+### ERB Template File Content
 
 The processed file can automatically include a warning that invites
 the editing of the template by using the following in the template:
