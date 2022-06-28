@@ -38,6 +38,29 @@ the editing of the template by using the following in the template:
 <%= erb_processor.commented_processed_header %>
 ```
 
+### A Template Example
+
+Here is a template example for some Java code:
+
+```java
+<%= erb_processor.commented_processed_header %>
+
+<% SCENARIOS_PENDING_AUTOMATION = 4 -%>
+
+public class PendingTestAutomation {
+
+<% SCENARIOS_PENDING_AUTOMATION.times do |i| 
+     scenario_id = i + 1
+-%>
+  @Test(enabled=false)
+  @Description("Test <%= scenario_id %>/<%= SCENARIOS_PENDING_AUTOMATION %> that is pending automation")
+  public void toBeSkipped_<%= scenario_id %>_of_<%= SCENARIOS_PENDING_AUTOMATION %>(){}
+
+<% end -%>
+}
+```
+
+
 ## Development
 
 After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
