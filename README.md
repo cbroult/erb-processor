@@ -28,8 +28,6 @@ The list of options is available with:
 
 ## Template Content
 
-See the [`features/*.feature`](features) files for the expected behavior depending on the template content.
-
 ### Auto Generated Header
 
 The processed file can automatically include a warning that invites
@@ -60,6 +58,9 @@ public class PendingTestAutomation {
 }
 ```
 
+### Template Processing and ERB Processor Behavior
+
+See the [`features/*.feature`](features) files for the expected behavior depending on the template content.
 
 ## Development
 
