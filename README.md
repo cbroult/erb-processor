@@ -54,7 +54,7 @@ public class PendingTestAutomation {
 -%>
   @Test(enabled=false)
   @Description("Test <%= scenario_id %>/<%= SCENARIOS_PENDING_AUTOMATION %> that is pending automation")
-  public void toBeSkipped_<%= scenario_id %>_of_<%= SCENARIOS_PENDING_AUTOMATION %>(){}
+  public void toBeAutomated_<%= scenario_id %>_of_<%= SCENARIOS_PENDING_AUTOMATION %>(){}
 
 <% end -%>
 }
