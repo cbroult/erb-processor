@@ -26,11 +26,11 @@ The list of options is available with:
 
     $ erb-processor --help
 
-### Expected Behavior
+## Template Content
 
-See the `features/*.feature` files for the expected behavior.
+See the [`features/*.feature`](features) files for the expected behavior depending on the template content.
 
-### ERB Template File Content
+### Auto Generated Header
 
 The processed file can automatically include a warning that invites
 the editing of the template by using the following in the template:
