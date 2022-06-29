@@ -45,6 +45,10 @@ Here is a template example for some Java code:
 
 <% SCENARIOS_PENDING_AUTOMATION = 4 -%>
 
+// The purpose of this class is to make the tests pending automation
+// explicitely visible in the CI/CD report.
+// The list of actual tests pending automation can be found at
+// https://...
 public class PendingTestAutomation {
 
 <% SCENARIOS_PENDING_AUTOMATION.times do |i| 
