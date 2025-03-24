@@ -1,6 +1,7 @@
 # ERB::Processor
 
 [![Test er-processor](https://github.com/cbroult/erb-processor/actions/workflows/main.yml/badge.svg)](https://github.com/cbroult/erb-processor/actions/workflows/main.yml)
+[![Dependabot Updates](https://github.com/cbroult/erb-processor/actions/workflows/dependabot/dependabot-updates/badge.svg)](https://github.com/cbroult/erb-processor/actions/workflows/dependabot/dependabot-updates)
 
 Allows for the processing of all `.erb` files in a directory tree.
 
