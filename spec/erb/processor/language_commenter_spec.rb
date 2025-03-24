@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# rubocop:disable Metrics/BlockLength
 RSpec.describe ERB::Processor::LanguageCommenter do
   let(:text_to_comment) do
     <<~END_OF_TEXT
@@ -50,3 +51,4 @@ RSpec.describe ERB::Processor::LanguageCommenter do
     end
   end
 end
+# rubocop:enable Metrics/BlockLength

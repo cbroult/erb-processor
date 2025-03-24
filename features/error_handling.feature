@@ -12,5 +12,5 @@ Feature: Template errors are reported
     When I run `erb-processor .`
     Then it should fail with:
       """
-      ./code.c.erb:0: undefined local variable or method `trying_to_access_an_inexisting_variable'
+      ./code.c.erb:0: undefined local variable or method 'trying_to_access_an_inexisting_variable'
       """

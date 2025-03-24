@@ -23,6 +23,7 @@ gem "guard-rspec"
 gem "guard-rubocop"
 gem "guard-yard"
 gem "juwelier" # , '~> 2.1.0'
+gem "rack"
 gem "rdoc" # , '~> 3.12'
 gem "rspec-core"
 gem "rspec-expectations"

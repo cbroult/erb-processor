@@ -8,7 +8,7 @@ class ERB
   module Processor
     # Processes a single file template
     class ForSingleFile
-      ERB_TEMPLATE_REGEX = /.erb$/i.freeze
+      ERB_TEMPLATE_REGEX = /.erb$/i
 
       def self.template_file?(path)
         ERB_TEMPLATE_REGEX.match?(path)

@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# rubocop:disable Metrics/BlockLength
 RSpec.describe ERB::Processor::ForSingleFile do
   let(:erb_processor) { described_class.new("./foo/bar/a_template_file.c.erb") }
 
@@ -19,16 +20,16 @@ RSpec.describe ERB::Processor::ForSingleFile do
 
   describe "#run" do
     it "writes a processed version of the template" do
-      allow(erb_processor).to receive(:processed_path).at_least(:once).
-        and_return(:target_path)
+      allow(erb_processor).to receive(:processed_path).at_least(:once)
+                                                      .and_return(:target_path)
 
-      allow(erb_processor).to receive(:processed_content).
-        and_return("<processed_content>")
+      allow(erb_processor).to receive(:processed_content)
+        .and_return("<processed_content>")
 
       file_object = instance_double(File, "output")
 
-      allow(File).to receive(:open).with(:target_path, "w+").
-        and_yield(file_object)
+      allow(File).to receive(:open).with(:target_path, "w+")
+                                   .and_yield(file_object)
 
       expect(file_object).to receive(:print).with("<processed_content>")
 
@@ -38,8 +39,8 @@ RSpec.describe ERB::Processor::ForSingleFile do
 
   describe "#processed_content" do
     it "uses ERB to process the template" do
-      allow(erb_processor).to receive(:template_content).
-        and_return("evaluated expression to <%= 4+6 -%>")
+      allow(erb_processor).to receive(:template_content)
+        .and_return("evaluated expression to <%= 4+6 -%>")
 
       expect(erb_processor.processed_content).to eq("evaluated expression to 10")
     end
@@ -47,8 +48,8 @@ RSpec.describe ERB::Processor::ForSingleFile do
 
   describe "#template_content" do
     it "read template file" do
-      allow(File).to receive(:read).with("./foo/bar/a_template_file.c.erb").
-        and_return("<template_content>")
+      allow(File).to receive(:read).with("./foo/bar/a_template_file.c.erb")
+                                   .and_return("<template_content>")
 
       expect(erb_processor.template_content).to eq("<template_content>")
     end
@@ -88,3 +89,4 @@ RSpec.describe ERB::Processor::ForSingleFile do
     end
   end
 end
+# rubocop:enable Metrics/BlockLength

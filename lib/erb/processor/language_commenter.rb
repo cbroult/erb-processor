@@ -44,7 +44,7 @@ class ERB
         end
       end
 
-      FILE_EXTENSION_REGEX = /\.([^.]+)$/.freeze
+      FILE_EXTENSION_REGEX = /\.([^.]+)$/
       def processed_language
         if target_file_path =~ FILE_EXTENSION_REGEX
           Regexp.last_match(1).intern

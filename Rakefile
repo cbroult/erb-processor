@@ -24,6 +24,7 @@ require "cucumber/rake/task"
 # Cucumber::Rake::Task.new if false
 
 # rubocop:disable Rails/RakeEnvironment
+desc "Run cucumber"
 task :cucumber do
   system "bundle exec cucumber"
 end
