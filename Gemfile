@@ -30,4 +30,5 @@ gem "rspec-expectations"
 gem "rspec-given"
 gem "shoulda" # , '>= 0'
 gem "simplecov" # , '>= 0'
+gem "syslog" unless Gem.win_platform?
 gem "wdm", ">= 0.1.0" if Gem.win_platform?
