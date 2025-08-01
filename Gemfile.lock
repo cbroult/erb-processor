@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    erb-processor (1.0.4)
+    erb-processor (1.0.5)
       logging (~> 2.3)
 
 GEM
@@ -353,4 +353,4 @@ DEPENDENCIES
   syslog
 
 BUNDLED WITH
-   2.6.9
+   2.7.1
