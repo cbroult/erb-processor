@@ -31,3 +31,10 @@ end
 # rubocop:enable Rails/RakeEnvironment
 
 task default: %i[spec rubocop cucumber]
+
+task :upgrade do
+  sh "gem update --system"
+  sh "gem update"
+  sh "bundle update --bundler"
+  sh "bundle update"
+end
