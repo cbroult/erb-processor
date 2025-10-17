@@ -14,6 +14,7 @@ RSpec.describe ERB::Processor::LanguageCommenter do
   end
 
   describe "#comment" do
+    # rubocop:disable RSpec/ExampleLength
     it do
       expect_comment_for("file.c", <<~EOEC)
         /*
@@ -22,6 +23,7 @@ RSpec.describe ERB::Processor::LanguageCommenter do
         */
       EOEC
     end
+    # rubocop:enable RSpec/ExampleLength
 
     it do
       expect_comment_for("file.py", <<~EOEC)

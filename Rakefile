@@ -32,7 +32,8 @@ end
 
 task default: %i[spec rubocop cucumber]
 
-task :upgrade do
+desc "Upgrade gems, including bundler and gem"
+task upgrade: :environment do
   sh "gem update --system"
   sh "gem update"
   sh "bundle update --bundler"

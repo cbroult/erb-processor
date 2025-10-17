@@ -2,12 +2,19 @@ AllCops:
   NewCops: enable
 
 plugins:
+  - rubocop-capybara
   - rubocop-performance
   - rubocop-rails
   - rubocop-rake
+
+require:
+  - rubocop-rspec
 
 Layout/LineLength:
   Max: 120
 
 Style/StringLiterals:
   EnforcedStyle: double_quotes
+
+Capybara:
+  Enabled: false
