@@ -26,16 +26,17 @@ Dir.glob("lib/tasks/**/*.rake").each { |r| load r }
 
 # Cucumber::Rake::Task.new if false
 
-# rubocop:disable Rails/RakeEnvironment
 desc "Run cucumber"
-task :cucumber do
+task cucumber: :environment do
   system "bundle exec cucumber"
 end
-# rubocop:enable Rails/RakeEnvironment
 
+# rubocop:disable Rails/RakeEnvironment
+desc "Run environment specific tasks"
 task :environment do
   :nothing
 end
+# rubocop:enable Rails/RakeEnvironment
 
 task default: %i[spec rubocop cucumber]
 
