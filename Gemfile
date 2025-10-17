@@ -5,13 +5,14 @@ source "https://rubygems.org"
 # Specify your gem's dependencies in erb-processor.gemspec
 gemspec
 
-gem "rake", "~> 13.0"
+gem "rake"
 
-gem "rspec", "~> 3.0"
+gem "rspec"
 
 gem "panolint"
-gem "rubocop", "~> 1.21"
+gem "rubocop"
 gem "rubocop-performance", require: false
+gem "rubocop-rspec", require: false
 
 gem "aruba" # , :git => 'https://github.com/cucumber/aruba.git' # 'https://github
 gem "bundler"
