@@ -97,6 +97,7 @@ GEM
     ffi (1.17.2-x86_64-linux-gnu)
     formatador (1.2.1)
       reline
+    gem-release (2.2.4)
     git (4.0.5)
       activesupport (>= 5.0)
       addressable (~> 2.8)
@@ -336,6 +337,7 @@ DEPENDENCIES
   bundler
   cucumber
   erb-processor!
+  gem-release
   guard
   guard-bundler
   guard-cucumber

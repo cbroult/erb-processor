@@ -5,6 +5,7 @@ source "https://rubygems.org"
 # Specify your gem's dependencies in erb-processor.gemspec
 gemspec
 
+gem "gem-release"
 gem "rake"
 
 gem "rspec"
