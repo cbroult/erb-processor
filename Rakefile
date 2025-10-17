@@ -15,6 +15,9 @@ require "rubygems"
 require "cucumber"
 require "cucumber/rake/task"
 
+# Load custom tasks
+Dir.glob("lib/tasks/**/*.rake").each { |r| load r }
+
 # if false
 #   Cucumber::Rake::Task.new(:cucumber) do |t|
 #     t.cucumber_opts = ["--format pretty"] # Any valid command line option can go here.
@@ -29,6 +32,10 @@ task :cucumber do
   system "bundle exec cucumber"
 end
 # rubocop:enable Rails/RakeEnvironment
+
+task :environment do
+  :nothing
+end
 
 task default: %i[spec rubocop cucumber]
 
