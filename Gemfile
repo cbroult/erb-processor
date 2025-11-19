@@ -17,6 +17,7 @@ gem "rubocop-rspec", require: false
 
 gem "aruba" # , :git => 'https://github.com/cucumber/aruba.git' # 'https://github
 gem "bundler"
+gem "bundler-audit"
 gem "cucumber"
 gem "guard"
 gem "guard-bundler"
