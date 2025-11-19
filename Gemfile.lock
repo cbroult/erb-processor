@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    erb-processor (1.0.7)
+    erb-processor (1.0.8)
       logging (~> 2.3)
 
 GEM
