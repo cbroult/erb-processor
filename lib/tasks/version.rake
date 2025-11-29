@@ -10,7 +10,7 @@ end
 
 def execute_version_bump(type)
   puts "Bumping #{type} version..."
-  bump_result = system("bundle exec gem bump --version #{type} --message 'build(deps): bump version to %{version}.'")
+  bump_result = system("bundle exec gem bump --version #{type} --message 'build(deps): bump version to %<version>s.'")
   return if bump_result
 
   puts "Error: Failed to bump version"
