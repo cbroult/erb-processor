@@ -9,6 +9,7 @@ plugins:
 
 require:
   - rubocop-rspec
+  - rubocop-rspec_rails
 
 Layout/LineLength:
   Max: 120

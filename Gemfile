@@ -25,13 +25,13 @@ gem "guard-cucumber"
 gem "guard-rspec"
 gem "guard-rubocop"
 gem "guard-yard"
-gem "juwelier" # , '~> 2.1.0'
+gem "juwelier"
 gem "rack"
-gem "rdoc" # , '~> 3.12'
+gem "rdoc"
 gem "rspec-core"
 gem "rspec-expectations"
 gem "rspec-given"
-gem "shoulda" # , '>= 0'
-gem "simplecov" # , '>= 0'
+gem "shoulda"
+gem "simplecov"
 gem "syslog" unless Gem.win_platform?
-gem "wdm", ">= 0.1.0" if Gem.win_platform?
+gem "wdm" if Gem.win_platform?

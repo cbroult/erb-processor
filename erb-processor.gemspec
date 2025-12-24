@@ -16,7 +16,7 @@ Gem::Specification.new do |spec|
   END_OF_DESCRIPTION
   spec.homepage = "https://github.com/cbroult/erb-processor"
   spec.license = "MIT"
-  spec.required_ruby_version = ">= 3.4.7"
+  spec.required_ruby_version = ">= 3.4.8"
 
   spec.metadata["allowed_push_host"] = "https://rubygems.org"
   spec.metadata["homepage_uri"] = spec.homepage
@@ -34,7 +34,7 @@ Gem::Specification.new do |spec|
   spec.require_paths = ["lib"]
 
   # Uncomment to register a new dependency of your gem
-  spec.add_dependency "logging", "~> 2.3"
+  spec.add_dependency "logging"
 
   # For more information and examples about making a new gem, check out our
   # guide at: https://bundler.io/guides/creating_gem.html
