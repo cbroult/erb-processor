@@ -45,6 +45,6 @@ task upgrade: :environment do
   sh "gem update --system"
   sh "gem update"
   sh "bundle update --bundler"
-  sh "bundle update"
+  sh "bundle update --all"
   sh "bundle audit"
 end
