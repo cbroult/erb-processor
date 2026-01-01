@@ -16,7 +16,7 @@ Gem::Specification.new do |spec|
   END_OF_DESCRIPTION
   spec.homepage = "https://github.com/cbroult/erb-processor"
   spec.license = "MIT"
-  spec.required_ruby_version = ">= 3.4.7"
+  spec.required_ruby_version = ">= 3.4.8"
 
   spec.metadata["allowed_push_host"] = "https://rubygems.org"
   spec.metadata["homepage_uri"] = spec.homepage
