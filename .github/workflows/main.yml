@@ -8,18 +8,21 @@ on:
   pull_request:
 
 jobs:
-  build:
+  build: Ruby ${{ matrix.os }}
     runs-on: ubuntu-latest
     name: Ruby ${{ matrix.ruby }}
     strategy:
+      fail-fast: false
       matrix:
-        ruby: ['3.4']
+        os: [ ubuntu-latest ]
+    runs-on: ${{ matrix.os }}
+
     steps:
     - uses: actions/checkout@v3
     - name: Set up Ruby
       uses: ruby/setup-ruby@v1
       with:
-        ruby-version: ${{ matrix.ruby }}
+        ruby-version: .ruby-version
         bundler-cache: true
 #    - name: Run the default task
 #      run: bundle exec rake
