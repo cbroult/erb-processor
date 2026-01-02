@@ -9,7 +9,7 @@ on:
 
 jobs:
   build:
-    name: Ruby ${{ matrix.os }}
+d    name: Ruby ${{ matrix.os }}
     strategy:
       fail-fast: false
       matrix:
