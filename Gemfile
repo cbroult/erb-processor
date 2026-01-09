@@ -10,10 +10,13 @@ gem "rake"
 
 gem "rspec"
 
-gem "panolint"
 gem "rubocop"
+gem "rubocop-capybara", require: false
 gem "rubocop-performance", require: false
+gem "rubocop-rails", require: false
+gem "rubocop-rake", require: false
 gem "rubocop-rspec", require: false
+gem "rubocop-rspec_rails", require: false
 
 gem "aruba" # , :git => 'https://github.com/cucumber/aruba.git' # 'https://github
 gem "bundler"
