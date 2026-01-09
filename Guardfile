@@ -47,11 +47,6 @@ group :red_green_refactor, halt_on_fail: true do
     dsl.watch_spec_files_for(ruby.lib_files)
   end
 
-  guard :rubocop, cli: ["--format", "clang", "--autocorrect"] do
-    watch(/.+\.rb$/)
-    watch(%r{(?:.+/)?\.rubocop(?:_todo)?\.yml$}) { |m| File.dirname(m[0]) }
-  end
-
   cucumber_options = {
     notification: false
   }
@@ -63,6 +58,11 @@ group :red_green_refactor, halt_on_fail: true do
     watch(%r{^features/step_definitions/(.+)_steps\.rb$}) do |m|
       Dir[File.join("**/#{m[1]}.feature")][0] || "features"
     end
+  end
+
+  guard :rubocop, cli: ["--format", "clang", "--autocorrect"] do
+    watch(/.+\.rb$/)
+    watch(%r{(?:.+/)?\.rubocop(?:_todo)?\.yml$}) { |m| File.dirname(m[0]) }
   end
 end
 

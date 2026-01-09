@@ -38,7 +38,7 @@ task :environment do
 end
 # rubocop:enable Rails/RakeEnvironment
 
-task default: %i[spec rubocop cucumber]
+task default: %i[spec cucumber rubocop]
 
 desc "Upgrade gems, including bundler and gem"
 task upgrade: :environment do

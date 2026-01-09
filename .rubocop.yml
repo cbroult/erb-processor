@@ -6,8 +6,6 @@ plugins:
   - rubocop-performance
   - rubocop-rails
   - rubocop-rake
-
-require:
   - rubocop-rspec
   - rubocop-rspec_rails
 
@@ -16,6 +14,3 @@ Layout/LineLength:
 
 Style/StringLiterals:
   EnforcedStyle: double_quotes
-
-Capybara:
-  Enabled: false
