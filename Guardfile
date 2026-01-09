@@ -17,7 +17,7 @@
 #
 # and, you'll have to watch "config/Guardfile" instead of "Guardfile"
 
-guard 'bundler' do
+guard "bundler" do
   require "guard/bundler"
   require "guard/bundler/verify"
   helper = Guard::Bundler::Verify.new
@@ -30,7 +30,7 @@ guard 'bundler' do
 end
 
 group :red_green_refactor, halt_on_fail: true do
-  guard 'rspec', cmd: "bundle exec rspec" do
+  guard "rspec", cmd: "bundle exec rspec" do
     require "guard/rspec/dsl"
     dsl = Guard::RSpec::Dsl.new(self)
 
@@ -60,9 +60,9 @@ group :red_green_refactor, halt_on_fail: true do
     end
   end
 
-  guard 'rubocop', cli: ["--format", "clang", "--autocorrect"] do
+  guard "rubocop", cli: ["--format", "clang", "--autocorrect"] do
     watch(/.+\.rb$/)
-    watch(%r{(?:.+/)?\.rubocop(?:_todo)?\.yml$}) { |m| File.dirname(m[0]) }
+    watch(%r{(?:.+/)?\.rubocop(?:_todo)?\.yml$}) { |m| m[0] ? File.dirname(m[0]) : "." }
   end
 end
 
