@@ -38,13 +38,40 @@ task :environment do
 end
 # rubocop:enable Rails/RakeEnvironment
 
-task default: %i[spec cucumber rubocop]
+task default: :verify
 
-desc "Upgrade gems, including bundler and gem"
-task upgrade: :environment do
-  sh "gem update --system"
-  sh "gem update"
-  sh "bundle update --bundler"
-  sh "bundle update --all"
-  sh "bundle audit"
+desc "Run all verification tasks"
+task verify: %i[spec cucumber rubocop]
+
+namespace :upgrade do
+  desc "Update gems automatically (branch to push and release)"
+  task auto: %i[branch gems verify commit version:bump release push]
+
+  desc "Create a branch for the upgrade"
+  task branch: :environment do
+    sh "git pull"
+    sh "git checkout -b upgrade/gems"
+  end
+
+  desc "Commit the upgrade branch"
+  task commit: :environment do
+    sh "git add Gemfile Gemfile.lock"
+    sh "git commit -m 'chore(deps): upgrade gems'"
+  end
+
+  desc "Upgrade gems, including bundler and gem"
+  task gems: :environment do
+    sh "gem update --system"
+    sh "gem update"
+    sh "bundle update --bundler"
+    sh "bundle update --all"
+    sh "bundle audit"
+  end
+
+  desc "Push the upgrade"
+  task push: :environment do
+    sh "git push origin upgrade/gems"
+    sh "git checkout main"
+    sh "git branch -D upgrade/gems"
+  end
 end
