@@ -43,6 +43,14 @@ task default: :verify
 desc "Run all verification tasks"
 task verify: %i[spec cucumber rubocop]
 
+def uprade_gems
+  sh "gem update --system"
+  sh "gem update"
+  sh "bundle update --bundler"
+  sh "bundle update --all"
+  sh "bundle audit"
+end
+
 namespace :upgrade do
   desc "Update gems automatically (branch to push and release)"
   task auto: %i[branch gems verify commit version:bump release push]
@@ -61,11 +69,7 @@ namespace :upgrade do
 
   desc "Upgrade gems, including bundler and gem"
   task gems: :environment do
-    sh "gem update --system"
-    sh "gem update"
-    sh "bundle update --bundler"
-    sh "bundle update --all"
-    sh "bundle audit"
+    uprade_gems
   end
 
   desc "Push the upgrade"
