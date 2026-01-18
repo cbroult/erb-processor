@@ -57,6 +57,8 @@ namespace :upgrade do
 
   desc "Create a branch for the upgrade"
   task branch: :environment do
+    sh "git checkout main"
+    sh "git branch -D upgrade/gems" if `git branch --list upgrade/gems`.any?
     sh "git pull"
     sh "git checkout -b upgrade/gems"
   end
@@ -75,7 +77,5 @@ namespace :upgrade do
   desc "Push the upgrade"
   task push: :environment do
     sh "git push origin upgrade/gems"
-    sh "git checkout main"
-    sh "git branch -D upgrade/gems"
   end
 end
