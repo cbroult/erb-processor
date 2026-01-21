@@ -7,19 +7,20 @@ on:
 
 jobs:
   build:
-    name: Ruby ${{ matrix.os }}
+    name: Ruby ${{ matrix.ruby-version }} on ${{ matrix.os }}
     strategy:
       fail-fast: false
       matrix:
         os: [ ubuntu-latest ]
+        ruby-version: [ '3.4', '4.0' ]
     runs-on: ${{ matrix.os }}
 
     steps:
-    - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
     - name: Set up Ruby
       uses: ruby/setup-ruby@v1
       with:
-        ruby-version: .ruby-version
+        ruby-version: ${{ matrix.ruby-version }}
         bundler-cache: true
 #    - name: Run the default task
 #      run: bundle exec rake
