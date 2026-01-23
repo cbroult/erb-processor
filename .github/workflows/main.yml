@@ -12,21 +12,19 @@ jobs:
       fail-fast: false
       matrix:
         os: [ ubuntu-latest ]
-        ruby-version: [ '3.4', '4.0' ]
+        ruby-version: [ '3.4', '4.0', 'jruby', 'truffleruby' ]
     runs-on: ${{ matrix.os }}
 
     steps:
       - uses: actions/checkout@v4
-    - name: Set up Ruby
-      uses: ruby/setup-ruby@v1
-      with:
-        ruby-version: ${{ matrix.ruby-version }}
-        bundler-cache: true
-#    - name: Run the default task
-#      run: bundle exec rake
-    - name: Run rspec
-      run: bundle exec rspec
-    - name: Run cucumber
-      run: bundle exec cucumber
-    - name: Run rubocop
-      run: bundle exec rubocop --config .rubocop.yml
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: ${{ matrix.ruby-version }}
+          bundler-cache: true
+      - name: Run rspec
+        run: bundle exec rspec
+      - name: Run cucumber
+        run: bundle exec cucumber
+      - name: Run rubocop
+        run: bundle exec rubocop --config .rubocop.yml
