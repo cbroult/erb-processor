@@ -10,7 +10,7 @@ Feature: Template errors are reported
       some code
       """
     When I run `erb-processor .`
-    Then it should fail with:
+    Then it should fail matching:
       """
-      ./code.c.erb:0: undefined local variable or method 'trying_to_access_an_inexisting_variable'
+      .*./code.c.erb:0: undefined local variable or method [`']trying_to_access_an_inexisting_variable'.*
       """
