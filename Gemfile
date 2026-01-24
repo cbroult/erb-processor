@@ -30,6 +30,7 @@ gem "guard-rubocop"
 gem "guard-yard"
 gem "juwelier"
 gem "rack"
+gem "rackup"
 gem "rdoc"
 gem "rspec-core"
 gem "rspec-expectations"
@@ -38,3 +39,6 @@ gem "shoulda"
 gem "simplecov"
 gem "syslog" unless Gem.win_platform?
 gem "wdm" if Gem.win_platform?
+gem "webrick"
+
+gem "ostruct", "~> 0.6.3"
