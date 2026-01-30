@@ -325,7 +325,7 @@ GEM
     sys-uname (1.4.1)
       ffi (~> 1.1)
       memoist3 (~> 1.0.0)
-    syslog (0.3.0)
+    syslog (0.4.0)
       logger
     thor (1.5.0)
     thread_safe (0.3.6)
