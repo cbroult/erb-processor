@@ -43,7 +43,7 @@ task default: :verify
 desc "Run all verification tasks"
 task verify: %i[spec cucumber rubocop]
 
-def uprade_gems
+def upgrade_gems
   sh "gem update --system"
   sh "gem update"
   sh "bundle update --bundler"
@@ -58,8 +58,8 @@ namespace :upgrade do
   desc "Create a branch for the upgrade"
   task branch: :environment do
     sh "git checkout main"
-    sh "git branch -D upgrade/gems" unless `git branch --list upgrade/gems`.chomp.empty?
     sh "git pull"
+    sh "git branch -D upgrade/gems" unless `git branch --list upgrade/gems`.chomp.empty?
     sh "git checkout -b upgrade/gems"
   end
 
@@ -71,11 +71,15 @@ namespace :upgrade do
 
   desc "Upgrade gems, including bundler and gem"
   task gems: :environment do
-    uprade_gems
+    upgrade_gems
   end
+
+  desc "Alias for upgrade:auto"
+  task upgrade: "upgrade:auto"
 
   desc "Push the upgrade"
   task push: :environment do
     sh "git push origin upgrade/gems"
   end
 end
+
