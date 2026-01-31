@@ -51,6 +51,9 @@ def upgrade_gems
   sh "bundle audit"
 end
 
+desc "Alias for upgrade:auto"
+task upgrade: "upgrade:auto"
+
 namespace :upgrade do
   desc "Update gems automatically (branch to push and release)"
   task auto: %i[branch gems verify commit version:bump release push]
@@ -73,9 +76,6 @@ namespace :upgrade do
   task gems: :environment do
     upgrade_gems
   end
-
-  desc "Alias for upgrade:auto"
-  task upgrade: "upgrade:auto"
 
   desc "Push the upgrade"
   task push: :environment do
