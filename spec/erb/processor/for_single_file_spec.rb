@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-# rubocop:disable Metrics/BlockLength
 RSpec.describe ERB::Processor::ForSingleFile do
   let(:erb_processor) { described_class.new("./foo/bar/a_template_file.c.erb") }
 
@@ -92,4 +91,3 @@ RSpec.describe ERB::Processor::ForSingleFile do
     # rubocop:enable RSpec/ExampleLength
   end
 end
-# rubocop:enable Metrics/BlockLength
