@@ -112,7 +112,7 @@ GEM
       oauth2 (~> 1.0)
     given_core (3.8.2)
       sorcerer (>= 0.3.7)
-    guard (2.20.0)
+    guard (2.20.1)
       formatador (>= 0.2.4)
       listen (>= 2.7, < 4.0)
       logger (~> 1.6)
@@ -148,8 +148,8 @@ GEM
     io-console (0.8.2)
     io-console (0.8.2-java)
     jar-dependencies (0.5.5)
-    json (2.18.0)
-    json (2.18.0-java)
+    json (2.18.1)
+    json (2.18.1-java)
     juwelier (2.4.9)
       builder
       bundler
@@ -264,7 +264,7 @@ GEM
       diff-lcs (>= 1.2.0, < 2.0)
       rspec-support (~> 3.13.0)
     rspec-support (3.13.7)
-    rubocop (1.84.0)
+    rubocop (1.84.1)
       json (~> 2.3)
       language_server-protocol (~> 3.17.0.2)
       lint_roller (~> 1.1.0)
