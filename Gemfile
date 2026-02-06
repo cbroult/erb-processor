@@ -7,6 +7,7 @@ gemspec
 
 gem "gem-release"
 gem "rake"
+gem "rake-gem-maintenance"
 
 gem "rspec"
 
