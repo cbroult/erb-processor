@@ -235,7 +235,7 @@ GEM
     public_suffix (7.0.2)
     racc (1.8.1)
     racc (1.8.1-java)
-    rack (3.2.4)
+    rack (3.2.5)
     rackup (2.3.1)
       rack (>= 3)
     rainbow (3.1.1)
