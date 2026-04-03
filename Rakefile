@@ -11,7 +11,7 @@ RuboCop::RakeTask.new do |t|
   t.options = ["--autocorrect"]
 end
 
-require "rake/gem_maintenance/install_tasks"
+require "rake/gem/maintenance/install_tasks"
 
 desc "Run cucumber"
 task cucumber: :environment do
