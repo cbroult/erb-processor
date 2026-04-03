@@ -9,6 +9,9 @@ plugins:
   - rubocop-rspec
   - rubocop-rspec_rails
 
+Layout/EndOfLine:
+  EnforcedStyle: lf
+
 Layout/LineLength:
   Max: 120
 
