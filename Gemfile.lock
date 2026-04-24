@@ -20,7 +20,7 @@ GEM
       securerandom (>= 0.3)
       tzinfo (~> 2.0, >= 2.0.5)
       uri (>= 0.13.1)
-    addressable (2.8.9)
+    addressable (2.9.0)
       public_suffix (>= 2.0.2, < 8.0)
     aruba (2.3.3)
       bundler (>= 1.17)
@@ -72,8 +72,8 @@ GEM
     diff-lcs (1.6.2)
     docile (1.4.1)
     drb (2.2.3)
-    erb (6.0.2)
-    erb (6.0.2-java)
+    erb (6.0.4)
+    erb (6.0.4-java)
     faraday (1.10.5)
       faraday-em_http (~> 1.0)
       faraday-em_synchrony (~> 1.0)
@@ -363,7 +363,7 @@ GEM
     uri (1.1.1)
     webrick (1.9.2)
     win32ole (1.9.3)
-    yard (0.9.38)
+    yard (0.9.42)
 
 PLATFORMS
   universal-java-21
