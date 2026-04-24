@@ -152,6 +152,10 @@ GEM
       concurrent-ruby (~> 1.0)
     io-console (0.8.2)
     io-console (0.8.2-java)
+    irb (1.16.0)
+      pp (>= 0.6.0)
+      rdoc (>= 4.0.0)
+      reline (>= 0.4.2)
     jar-dependencies (0.5.7)
     json (2.19.3)
     json (2.19.3-java)
@@ -219,6 +223,9 @@ GEM
     parser (3.3.11.1)
       ast (~> 2.4.1)
       racc
+    pp (0.6.3)
+      prettyprint
+    prettyprint (0.2.0)
     prism (1.9.0)
     process_executer (4.0.2)
       track_open_instances (~> 0.1)
@@ -377,6 +384,7 @@ DEPENDENCIES
   guard-rspec
   guard-rubocop
   guard-yard
+  irb
   juwelier
   ostruct (~> 0.6.3)
   rack
