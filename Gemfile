@@ -43,4 +43,4 @@ gem "syslog" unless Gem.win_platform?
 gem "wdm" if Gem.win_platform?
 gem "webrick"
 
-gem "ostruct", "~> 0.6.3"
+gem "ostruct"
