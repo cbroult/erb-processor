@@ -157,8 +157,8 @@ GEM
       rdoc (>= 4.0.0)
       reline (>= 0.4.2)
     jar-dependencies (0.5.7)
-    json (2.19.3)
-    json (2.19.3-java)
+    json (2.19.4)
+    json (2.19.4-java)
     juwelier (2.4.9)
       builder
       bundler
@@ -264,7 +264,7 @@ GEM
       erb
       psych (>= 4.0.0)
       tsort
-    regexp_parser (2.11.3)
+    regexp_parser (2.12.0)
     reline (0.6.3)
       io-console (~> 0.5)
     rspec (3.13.2)
@@ -297,9 +297,9 @@ GEM
     rubocop-ast (1.49.1)
       parser (>= 3.3.7.2)
       prism (~> 1.7)
-    rubocop-capybara (2.22.1)
+    rubocop-capybara (2.23.0)
       lint_roller (~> 1.1)
-      rubocop (~> 1.72, >= 1.72.1)
+      rubocop (~> 1.81)
     rubocop-performance (1.26.1)
       lint_roller (~> 1.1)
       rubocop (>= 1.75.0, < 2.0)
