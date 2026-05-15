@@ -158,8 +158,8 @@ GEM
       rdoc (>= 4.0.0)
       reline (>= 0.4.2)
     jar-dependencies (0.5.7)
-    json (2.19.4)
-    json (2.19.4-java)
+    json (2.19.5)
+    json (2.19.5-java)
     juwelier (2.4.9)
       builder
       bundler
@@ -307,7 +307,7 @@ GEM
       lint_roller (~> 1.1)
       rubocop (>= 1.75.0, < 2.0)
       rubocop-ast (>= 1.47.1, < 2.0)
-    rubocop-rails (2.34.3)
+    rubocop-rails (2.35.0)
       activesupport (>= 4.2.0)
       lint_roller (~> 1.1)
       rack (>= 1.1)
